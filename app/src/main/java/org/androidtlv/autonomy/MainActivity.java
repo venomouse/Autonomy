@@ -5,6 +5,8 @@ import com.gemsense.gemsdk.*;
 import com.gemsense.gemsdk.utils.AzimuthElevationConverter;
 
 import android.content.Context;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    //hey
+    int notificationId = 001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,17 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         //Unbind Gem Service from the application
         GemManager.getDefault().unbindService(this);
+    }
+
+    private void sendNotification(String stringAlert){
+        NotificationCompat.Builder notificationBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setContentTitle("Emergency from Itamar Room")
+                        .setContentText(stringAlert);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(notificationId, notificationBuilder.build());
+
     }
 }
 
