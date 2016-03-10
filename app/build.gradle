@@ -24,8 +24,13 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.gemsense:gemsdk:1.1.1'
+    compile 'com.github.Triggertrap:SeekArc:v1.1'
 }
 
 repositories {
     maven { url 'https://raw.github.com/Gemsense/GemSDK-for-Android/mvn-repo' }
+
+    maven {
+        url "https://jitpack.io"
+    }
 }
