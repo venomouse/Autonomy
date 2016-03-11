@@ -15,10 +15,63 @@
         android:layout_height="wrap_content"
         android:id="@+id/fab"
         android:src="@drawable/ic_add"
-        app:borderWidth="2dp"
-        app:fabSize="normal"
+        app:backgroundTint="#FF9800"
+        android:layout_marginBottom="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAlert"
+        android:background="@drawable/alert"
+        android:layout_above="@+id/fab"
+        android:layout_alignStart="@+id/btnCold"
+        android:layout_marginBottom="412dp" />
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:id="@+id/btnCold"
+        android:background="@drawable/cold"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/fab"
+        android:layout_alignBottom="@+id/btnTired"
+        android:layout_alignTop="@+id/btnTired" />
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:id="@+id/btnTired"
+        android:background="@drawable/tired"
+        android:layout_toEndOf="@+id/fab"
+        android:layout_marginTop="89dp"
+        android:layout_marginBottom="222dp"
+        android:layout_alignTop="@+id/btnAlert"
+        android:layout_above="@+id/fab" />
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:id="@+id/btnToilat"
+        android:background="@drawable/toilet"
+        android:layout_below="@+id/btnCold"
+        android:layout_alignStart="@+id/btnCold"
+        android:layout_marginTop="22dp"
+        android:layout_alignEnd="@+id/btnCold"
+        android:layout_above="@+id/fab"
+        android:layout_marginBottom="33dp" />
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:id="@+id/btnHungry"
+        android:background="@drawable/hungry"
+        android:layout_alignTop="@+id/btnToilat"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/btnTired"
+        android:layout_above="@+id/fab"
+        android:layout_marginBottom="37dp" />
 
 
 </RelativeLayout>
