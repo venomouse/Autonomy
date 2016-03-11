@@ -20,8 +20,6 @@ import com.gemsense.gemsdk.GemSDKUtilityApp;
 import com.gemsense.gemsdk.utils.TiltElevationConverter;
 
 public class ChooseActivity extends AppCompatActivity {
-    boolean inRecordingMode = false;
-    boolean inTestingMode = false;
     TiltElevationConverter converter = new TiltElevationConverter();
     HeadMotionTracker headMotionTracker = new HeadMotionTracker();
 
@@ -31,15 +29,8 @@ public class ChooseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose);
+        headMotionTracker =new HeadMotionTracker();
 
-        final Button recordButton = (Button) findViewById(R.id.recordBtn);
-        recordButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                inRecordingMode = true;
-                recordButton.setEnabled(false);
-            }
-        });
         String[] whitelist = GemSDKUtilityApp.getWhiteList((Context) this);
         GemListener gemListener = new GemListener() {
             @Override
@@ -59,20 +50,16 @@ public class ChooseActivity extends AppCompatActivity {
             @Override
             public void onSensorsChanged(GemSensorsData data) {
 
+                updateHeadMotionTracker(data.quaternion);
 
-                if (inRecordingMode || inTestingMode) {
-                    updateHeadMotionTracker(data.quaternion);
+                if (headMotionTracker.motionDetected()) {
+                    HeadMotion motion = headMotionTracker.getLastMotion();
 
-                    if (headMotionTracker.motionDetected()) {
-                        HeadMotion motion = headMotionTracker.getLastMotion();
+                    Toast.makeText(ChooseActivity.this, "Toilet Request Detected", Toast.LENGTH_SHORT).show();
+                    sendNotification("Autonomy Alert");
 
-                        TextView motionDetectedText = (TextView) findViewById(R.id.motionDetectedText);
-                        motionDetectedText.setText("MotionDetected, min motions" + Integer.toString(motion.minMotions));
-                        recordButton.setEnabled(true);
-                        sendNotification("Autonomy Alert");
-                        inRecordingMode = false;
-                    }
                 }
+
             }
 
             @Override
@@ -89,7 +76,6 @@ public class ChooseActivity extends AppCompatActivity {
             Gem firstGem = GemManager.getDefault().getGem(whitelist[0], gemListener);
         }
 
-
     }
 
 
@@ -97,8 +83,6 @@ public class ChooseActivity extends AppCompatActivity {
 
         float[] te = converter.convertLH(q);
         headMotionTracker.update(te[0]);
-        TextView tiltVal = (TextView) findViewById(R.id.tiltVal);
-        tiltVal.setText(Float.toString(te[0]));
 
     }
 
