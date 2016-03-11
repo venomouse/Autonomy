@@ -31,65 +31,17 @@
         android:id="@+id/tiltVal"
         android:layout_marginTop="15dp" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Elevation"
-        android:id="@+id/yLable"
-        android:layout_marginTop="15dp" />
+        android:text="Record"
+        android:id="@+id/recordBtn" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Undefined"
-        android:id="@+id/elevationVal"
-        android:layout_marginTop="15dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Speed"
-        android:id="@+id/speedLabel"
-        android:layout_marginTop="15dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Elevation"
-        android:id="@+id/speedVal"
-        android:layout_marginTop="15dp" />
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="In motion"
-        android:id="@+id/contButton" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Original Tilt:"
-        android:layout_marginTop="15dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:id="@+id/origTilt"
-        android:layout_marginTop="15dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Continuous Motions:"
-        android:layout_marginTop="15dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:id="@+id/contMotions"
-        android:layout_marginTop="15dp" />
+        android:text=""
+        android:id="@+id/motionDetectedText" />
 
 
 </LinearLayout>
