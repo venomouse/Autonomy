@@ -187,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
                         .setContentText(stringAlert);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(notificationId, notificationBuilder.build());
-
     }
 }
 
